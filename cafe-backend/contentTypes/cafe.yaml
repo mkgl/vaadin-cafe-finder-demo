@@ -1,0 +1,14 @@
+datasource:
+  workspace: "cafes"
+  autoCreate: true
+model:
+  properties:
+    - name: "name"
+    - name: "address"
+    - name: "website"
+    - name: "description"
+    - name: "evaluation"
+      type: long
+    - name: "location"
+    - name: "photo"
+      type: asset

@@ -1,0 +1,28 @@
+---
+title: Magnolia Café Backend
+order: 1
+layout: page
+---
+
+= Magnolia Café Backend
+
+The Café Finder's backend is a stock Magnolia 6 project configured with a light module.
+The `cafe-backend` light module defines 3 things:
+
+* The `cafe` Content Type, defining the raw model and datasource coordinates
+* A `cafes` Content app for creating/editing café entries
+* A REST Delivery endpoint configuring Magnolia to serve cafés at the following
+conventional base-URL: /.rest/delivery/cafes/v1, and resolving/inlining the photos
+referenced in the Magnolia DAM.
+
+Mind that despite Content Types creating a JCR workspace for us, there is no workspace
+permission granted to the _anonymous_ role by default. Go to Security app, edit the
+anonymous role, and add Read permission to the cafes workspace.
+
+See also:
+
+* https://documentation.magnolia-cms.com/
+
+== Next steps
+
+* Provide sample content bootstraps as doc-exports
