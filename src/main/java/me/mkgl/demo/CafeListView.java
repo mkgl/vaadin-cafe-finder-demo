@@ -1,10 +1,15 @@
 package me.mkgl.demo;
 
+import org.springframework.web.client.ResourceAccessException;
+import org.springframework.web.client.RestClientException;
+
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
+import com.vaadin.flow.component.notification.Notification;
+import com.vaadin.flow.component.notification.Notification.Position;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.data.provider.DataProvider;
 import com.vaadin.flow.data.renderer.ComponentRenderer;
@@ -45,6 +50,13 @@ public class CafeListView extends VerticalLayout implements BeforeEnterObserver 
 
     @Override
     public void beforeEnter(BeforeEnterEvent event) {
-        cafeList.setDataProvider(DataProvider.ofCollection(service.getAllCafes()));
+        try {
+            cafeList.setDataProvider(DataProvider.ofCollection(service.getAllCafes()));
+        } catch (ResourceAccessException e) {
+            // FIXME cannot specifically style notifications atm; see https://github.com/vaadin/vaadin-notification-flow/issues/49
+            Notification.show("Couldn't fetch cafés right now", 10000, Position.MIDDLE);
+        } catch (RestClientException e) {
+            Notification.show("Couldn't render cafés right now", 10000, Position.MIDDLE);
+        }
     }
 }
