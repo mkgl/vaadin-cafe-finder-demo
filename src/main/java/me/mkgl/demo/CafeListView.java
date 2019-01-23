@@ -9,7 +9,7 @@ import com.vaadin.flow.router.BeforeEnterObserver;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-@Route("cafes")
+@Route(value = "cafes", layout = AppLayout.class)
 @PageTitle("All cafés - Café Finder")
 public class CafeListView extends VerticalLayout implements BeforeEnterObserver {
     private final CafeService service;

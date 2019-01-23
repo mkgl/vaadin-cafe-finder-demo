@@ -12,7 +12,7 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
-@Route("login")
+@Route(value = "login", layout = AppLayout.class)
 @PageTitle("Café Finder")
 public class LoginView extends VerticalLayout {
     private static final String APP_TITLE = "Café Finder";
