@@ -1,0 +1,39 @@
+= Vaadin Café Finder demo
+
+The Café Finder is a basic example of Vaadin Flow app, defining few views and routes,
+as well as introducing theming in the WebComponents era.
+
+The skeleton is a Spring Boot app, packaged as a runnable Jar, and fetching data
+using a simple `RestTemplate` in the `CafeService`.
+The back-end is a Magnolia 6 project defining _cafés_ as a Content Type, and
+serving it through the REST Delivery API.
+
+This app was (re-)created for the JavaSaigon January 2019 meetup. An earlier version
+was originally featured at the JavaBasel 2016 conference (_Headless Content Management
+on the Java stack_).
+
+== Vaadin Flow notable differences
+
+* UI class is different and is optional
+* Servlet Definition is Optional (default one as servlet context listener registering routes)
+* Completely new CSS4-based themes, no Sass
+* Static resources are provided via web-fragments, no more VAADIN directory
+* WebComponents are typically packaged as WebJars
+
+See also:
+
+* https://vaadin.com/docs/v10/flow/migration/3-general-differences.html
+* https://vaadin.com/docs/v10/flow/migration/4-routing-navigation.html
+* https://vaadin.com/docs/v12/flow/migration/6-theming.html
+* https://vaadin.com/blog/vaadin-10-and-static-resources
+* https://vaadin.com/blog/vaadin-10-and-webjars
+
+== Possible next steps/homework
+
+* Use a lazy DataProvider to fetch cafés using the Delivery API pagination
+* Port the Image renderer to display the café's photos
+* Replace the Grid with an IronList
+* Implement global login/rerouting
+* Port the Geolocation extension to calculate distances
+* Add a form view to edit Cafés from the app
+* Upgrade/bridge Jackrabbit's Lucene to enable geo-search
