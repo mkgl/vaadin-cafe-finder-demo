@@ -1,0 +1,24 @@
+<!-- Place these in your index.html -->
+<link rel="import" href="../bower_components/vaadin-lumo-styles/color.html">
+<link rel="import" href="../bower_components/vaadin-lumo-styles/sizing.html">
+<link rel="import" href="../bower_components/vaadin-lumo-styles/spacing.html">
+<link rel="import" href="../bower_components/vaadin-lumo-styles/style.html">
+<link rel="import" href="../bower_components/vaadin-lumo-styles/typography.html">
+
+<!-- Include the main style modules in global scope (index.html) -->
+<custom-style>
+  <style include="lumo-color lumo-typography"></style>
+</custom-style>
+
+<!-- Add directly to index.html or use a separate HTML import -->
+<custom-style>
+  <style>
+    html {
+      font-size: 15px;
+
+      --lumo-border-radius: 10px;
+      --lumo-font-family: "Roboto", sans-serif;
+      --lumo-primary-color: #da444f;
+    }
+  </style>
+</custom-style>

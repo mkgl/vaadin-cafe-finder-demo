@@ -1,6 +1,7 @@
 package me.mkgl.demo;
 
 import com.vaadin.flow.component.UI;
+import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
@@ -11,6 +12,7 @@ import com.vaadin.flow.server.InitialPageSettings;
 import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.server.PageConfigurator;
 
+@HtmlImport("styles/shared-styles.html")
 @PWA(name = "Café Finder", shortName = "CaféFinder")
 @Viewport("width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=no")
 public class AppLayout extends VerticalLayout implements RouterLayout, PageConfigurator {
