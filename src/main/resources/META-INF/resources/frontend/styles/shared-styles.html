@@ -13,12 +13,143 @@
 <!-- Add directly to index.html or use a separate HTML import -->
 <custom-style>
   <style>
+    :root {
+      --green: hsl(85, 100%, 30%);
+      --blue: hsl(221, 62%, 52%);
+      --yellow: hsl(42, 100%, 50%);
+      --red: hsl(16, 100%, 48%);
+
+      --black: hsl(0, 0%, 14%);
+      --light-black: hsl(0, 0%, 22%);
+      --dark-grey: hsl(0, 0%, 79%);
+      --mid-grey: hsl(0, 0%, 86%);
+      --light-grey: hsl(0, 0%, 96%);
+      --white: hsl(0, 0%, 100%);
+    }
+
     html {
       font-size: 15px;
 
-      --lumo-border-radius: 10px;
       --lumo-font-family: "Roboto", sans-serif;
-      --lumo-primary-color: #da444f;
+
+      --lumo-base-color: #fff;
+      --lumo-primary-color: hsl(356, 67%, 56%);
+
+      --lumo-border-radius: 1px;
+
+      --lumo-box-shadow-s: none;
+      --lumo-box-shadow-m: none;
+      --lumo-box-shadow-l: none;
+      --lumo-box-shadow-xl: none;
+
+      --lumo-size-m: 45px;
+      --lumo-space-xs: 5px;
+
+      --lumo-disabled-text-color: inherit;
+
+      /* TODO extract to button mixin */
+      --lumo-contrast-5pct: var(--black);
+      --lumo-primary-text-color: var(--white);
+    }
+
+    vaadin-form-layout.main {
+      padding: 20px;
+      max-width: 900px;
+    }
+
+    vaadin-button {
+      font-weight: normal;
+    }
+
+    vaadin-button[theme~="primary"] {
+      --lumo-border-radius: 30px;
+    }
+
+    vaadin-button.secondary {
+      --lumo-border-radius: 30px;
+      color: var(--black);
+      border: 1px solid var(--dark-grey);
+      background-color: var(--white);
+    }
+
+    img.logo {
+      height: 45px;
     }
   </style>
 </custom-style>
+
+<!-- Define a theme module (in index.html or in a separate HTML import) -->
+<dom-module id="resurface-textfield" theme-for="vaadin-text-field vaadin-text-area">
+  <template>
+    <style>
+      [part="input-field"] {
+        font-weight: normal;
+        /*height: 45px;*/
+        background-color: var(--light-grey);
+        border: 1px solid transparent;
+      }
+      [part="label"] {
+        font-weight: 300;
+        font-size: 1rem;
+        color: var(--black);
+      }
+
+      :host([focused]:not([readonly])) [part="input-field"] {
+        background-color: var(--white);
+        border: 1px solid var(--black);
+      }
+      :host([focus-ring]) [part="input-field"] {
+        box-shadow: none;
+        border: 1px solid var(--black);
+      }
+      :host([focused]:not([readonly])) [part="label"] {
+        color: var(--black);
+        font-weight: 500;
+      }
+
+      [part="input-field"]::after {
+        content: none;
+      }
+      :host(:hover:not([readonly]):not([focused])) [part="input-field"] {
+        border: 1px solid var(--mid-grey)
+      }
+
+      :host([disabled]) {
+        opacity: 0.4;
+      }
+      :host([disabled]) [part="input-field"] {
+        color: var(--black);
+        background-color: var(--light-grey);
+      }
+      :host([disabled]) [part="label"] {
+        color: var(--black);
+      }
+    </style>
+  </template>
+</dom-module>
+
+<dom-module id="resurface-notification" theme-for="vaadin-notification-card">
+  <template>
+    <style>
+      :host [part="overlay"] {
+        background: none;
+      }
+
+      :host [part="content"],
+      :host.info [part="content"] {
+        color: var(--white);
+        background-color: var(--blue);
+        height: calc(60px - 1.5rem);
+        border-radius: 30px;
+        box-shadow: 0 20px 50px 0 rgba(0, 0, 0, 0.2);
+      }
+      :host.warn [part="content"] {
+        color: var(--black);
+        background-color: var(--yellow);
+      }
+      :host.error [part="content"]{
+        background-color: var(--red);
+      }
+    </style>
+  </template>
+</dom-module>
