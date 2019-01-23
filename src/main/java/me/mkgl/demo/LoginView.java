@@ -3,10 +3,10 @@ package me.mkgl.demo;
 import org.vaadin.marcus.shortcut.Shortcut;
 
 import com.vaadin.flow.component.Key;
+import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.checkbox.Checkbox;
 import com.vaadin.flow.component.html.H3;
-import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
@@ -22,7 +22,7 @@ public class LoginView extends VerticalLayout {
         username.focus();
 
         Button signin = new Button("Coffee please!", click -> {
-            Notification.show("Hello " + username.getValue());
+            UI.getCurrent().navigate(CafeListView.class);
         });
 
         Shortcut.add(username, Key.ENTER, signin::click);
