@@ -1,11 +1,14 @@
 package me.mkgl.demo;
 
+import static com.vaadin.flow.component.grid.ColumnTextAlign.CENTER;
+
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientException;
 
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.icon.Icon;
 import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.component.notification.Notification;
@@ -31,6 +34,14 @@ public class CafeListView extends VerticalLayout implements BeforeEnterObserver 
         addClassName("grid-panel");
 
         cafeList = new Grid<>();
+        cafeList.addColumn(new ComponentRenderer<>(cafe -> {
+            Image image = new Image(cafe.getPhoto().getUrl(), cafe.getName());
+            image.setHeight("90px");
+            return image;
+        }))
+                .setWidth("90px")
+                .setFlexGrow(0)
+                .setTextAlign(CENTER);
         cafeList.addColumn(Cafe::getName).setHeader("Café");
         cafeList.addColumn(new ComponentRenderer<>(cafe -> {
             Div rating = new Div();

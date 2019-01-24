@@ -1,9 +1,3 @@
----
-title: Magnolia Café Backend
-order: 1
-layout: page
----
-
 = Magnolia Café Backend
 
 The Café Finder's backend is a stock Magnolia 6 project configured with a light module.
@@ -15,9 +9,23 @@ The `cafe-backend` light module defines 3 things:
 conventional base-URL: /.rest/delivery/cafes/v1, and resolving/inlining the photos
 referenced in the Magnolia DAM.
 
-Mind that despite Content Types creating a JCR workspace for us, there is no workspace
+= Set up
+
+By default, the rest-anonymous role gives us web access to the everything under
+`/.rest/delivery/*`. However, in order to get all our content, we still need
+a couple of security setup steps.
+
+=== Add workspace permission
+
+Content Types create a JCR workspace for us, however mind that there is no workspace
 permission granted to the _anonymous_ role by default. Go to Security app, edit the
 anonymous role, and add Read permission to the cafes workspace.
+
+=== Add URI permission for the DAM servlet
+
+We serve café images from the Magnolia DAM. Similarly, the _anonymous_ role does not
+have URI permission to the DAM servlet. Go to Security app, edit the anonymous role,
+and add a Web Access entry to `/dam/*`.
 
 See also:
 

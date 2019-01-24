@@ -31,7 +31,6 @@ See also:
 == Possible next steps/homework
 
 * Use a lazy DataProvider to fetch cafés using the Delivery API pagination
-* Port the Image renderer to display the café's photos
 * Replace the Grid with an IronList
 * Implement global login/rerouting
 * Port the Geolocation extension to calculate distances

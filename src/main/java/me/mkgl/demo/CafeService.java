@@ -7,7 +7,8 @@ import org.springframework.web.client.RestTemplate;
 import lombok.Data;
 
 public class CafeService {
-    private static final String BASE_URI = "http://localhost:8580/.rest/delivery/cafes/v1";
+    static final String HOST = "http://localhost:8580";
+    static final String BASE_URI = HOST + "/.rest/delivery/cafes/v1";
 
     List<Cafe> getAllCafes() {
         RestTemplate restTemplate = new RestTemplate();
